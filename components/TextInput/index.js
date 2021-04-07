@@ -12,7 +12,7 @@ const TextInput = ({ text, setText, placeholder = '', isAutoFocus = true, requir
                 }}
                 required={required}
             />
-            {check ? (required && !text ? <div className="text-primary mx-8"> {requiredMsg} </div> : null) : null}
+            {check ? (required && !text ? <div className="text-primary mx-8">{requiredMsg} </div> : null) : null}
         </div>
     );
 }
