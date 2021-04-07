@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-
+import TextInput from '../components/TextInput'
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -12,6 +12,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to HackerNews
         </h1>
+        <TextInput />
       </main>
     </div>
   )
