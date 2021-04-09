@@ -5,7 +5,7 @@ const MainLayout = ({ children }) => {
     return (
         <div className="min-h-screen flex flex-col justify-between">
             <Header />
-            <main className="h-full">{children}</main>
+                {children}
             <Footer />
         </div>
     );
