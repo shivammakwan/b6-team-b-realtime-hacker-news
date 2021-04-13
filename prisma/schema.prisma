@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -10,29 +10,37 @@ generator client {
   provider = "prisma-client-js"
 }
 
-
 model User {
-  id            Int       @default(autoincrement()) @id
-  name          String?
-  email         String?   @unique
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  projects      Project[]
+  id          Int           @id @default(autoincrement())
+  username    String        @unique
+  password    String
+  email       String        @unique
+  firstname   String
+  lastname    String?
+  role        String
+  isActive    Boolean
+  isVerified  Boolean       @default(false)
+  createdAt   DateTime      @default(now()) @map(name: "created_at")
+  updatedAt   DateTime      @updatedAt @map(name: "updated_at")
+  Post_master Post_master[]
+
   @@map(name: "users")
 }
 
-model Project {
-  id        Int     @default(autoincrement()) @id
-  title     String
-  user    User?   @relation(fields: [userId], references: [id])
-  userId  Int?
-  tasks   Task[]
-}
-
-model Task {
-  id        Int     @default(autoincrement()) @id
-  title     String
-  completed Boolean @default(false)
-  project    Project?   @relation(fields: [projectId], references: [id])
-  projectId  Int?
+model Post_master {
+  id               Int       @id @default(autoincrement())
+  type             String
+  title            String
+  imageUrl         String?
+  postUrl          String?
+  description      String?
+  user             User?     @relation(fields: [userId], references: [id])
+  userId           Int?
+  isActive         Boolean   @default(true)
+  deletedByAdmin   Boolean   @default(false)
+  deletedByUser    Boolean   @default(false)
+  adminDeletedDate DateTime?
+  userDeletedDate  DateTime?
+  createdAt        DateTime  @default(now()) @map(name: "created_at")
+  updatedAt        DateTime  @updatedAt @map(name: "updated_at")
 }
