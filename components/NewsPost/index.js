@@ -12,7 +12,7 @@ function NewsPost({ hideDesc = false }) {
                         }}
                         className="rounded-tl-lg rounded-tr-lg"
                     />
-                    <span className="absolute top-2 bg-green-400 text-white py-1 px-2 text-xs rounded-tr-sm rounded-br-md">100 Points</span>
+                    <span className="absolute top-2 bg-green-400 text-white py-1 px-2 text-xs rounded-tr-sm rounded-br-md">0 Points</span>
                 </div>
                 <div className="p-5 rounded-bl-lg rounded-br-lg bg-white">
                     <div className="flex justify-between">
