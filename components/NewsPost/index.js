@@ -1,6 +1,6 @@
 import React from "react";
 
-function NewsPost() {
+function NewsPost({ hideDesc = false }) {
     return (
         <div className="w-full md:w-1/2 lg:w-1/4 p-3">
             <div className="rounded-lg border hover:shadow-md">
@@ -21,7 +21,7 @@ function NewsPost() {
                     </div>
                     <h1 className="mt-1 text-sm text-right text-gray-800 font-medium">Author Name</h1>
                     <h1 className="mt-2 text-black font-bold">Some Title</h1>
-                    <p className="text-gray-500 text-sm mt-3">Some Description</p>
+                    {!hideDesc && <p className="text-gray-500 text-sm mt-3">Some Description</p>}
                 </div>
             </div>
         </div>
