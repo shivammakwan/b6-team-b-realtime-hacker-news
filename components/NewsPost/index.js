@@ -33,7 +33,11 @@ function NewsPost({
                     </div>
                     <h1 className="mt-1 text-sm text-right text-gray-800 font-medium">{author}</h1>
                     <h1 className="mt-2 text-black font-bold">{title}</h1>
-                    {!hideDesc && <p className="text-gray-500 text-sm mt-3">{description}</p>}
+                    {!hideDesc && (
+                        <p className="text-gray-500 text-sm mt-3">
+                            {description.length < 150 ? description : description.substr(0, 150) + " ..."}
+                        </p>
+                    )}
                 </div>
             </div>
         </div>
