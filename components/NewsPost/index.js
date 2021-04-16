@@ -1,6 +1,13 @@
 import React from "react";
 
-function NewsPost({ title = "Title", description = "Description", author = "Author", hideDesc = false }) {
+function NewsPost({
+    title = "Title",
+    description = "Description",
+    author = "Author",
+    noOfComments = 0,
+    postDate = "Date",
+    hideDesc = false,
+}) {
     return (
         <div className="w-full md:w-1/2 lg:w-1/4 p-3">
             <div className="rounded-lg border hover:shadow-md">
@@ -16,8 +23,8 @@ function NewsPost({ title = "Title", description = "Description", author = "Auth
                 </div>
                 <div className="p-5 rounded-bl-lg rounded-br-lg bg-white">
                     <div className="flex justify-between">
-                        <span className="text-xs text-red-400 font-bold">15-04-2021</span>
-                        <span className="text-xs text-gray-600 font-semibold">0 Comments</span>
+                        <span className="text-xs text-red-400 font-bold">{postDate}</span>
+                        <span className="text-xs text-gray-600 font-semibold">{noOfComments} Comments</span>
                     </div>
                     <h1 className="mt-1 text-sm text-right text-gray-800 font-medium">{author}</h1>
                     <h1 className="mt-2 text-black font-bold">{title}</h1>
