@@ -5,6 +5,7 @@ function NewsPost({
     description = "Description",
     author = "Author",
     noOfComments = 0,
+    noOfPoints = 0,
     postDate = "Date",
     postImage = "assets/images/news-post-bg.jpg",
     hideDesc = false,
@@ -20,7 +21,9 @@ function NewsPost({
                         }}
                         className="rounded-tl-lg rounded-tr-lg"
                     />
-                    <span className="absolute top-2 bg-green-400 text-white py-1 px-2 text-xs rounded-tr-sm rounded-br-md">0 Points</span>
+                    <span className="absolute top-2 bg-green-400 text-white py-1 px-2 text-xs rounded-tr-sm rounded-br-md">
+                        {noOfPoints} Points
+                    </span>
                 </div>
                 <div className="p-5 rounded-bl-lg rounded-br-lg bg-white">
                     <div className="flex justify-between">
