@@ -6,6 +6,7 @@ function NewsPost({
     author = "Author",
     noOfComments = 0,
     postDate = "Date",
+    postImage = "assets/images/news-post-bg.jpg",
     hideDesc = false,
 }) {
     return (
@@ -13,7 +14,7 @@ function NewsPost({
             <div className="rounded-lg border hover:shadow-md">
                 <div className="relative">
                     <img
-                        src="assets/images/news-post-bg.jpg"
+                        src={postImage}
                         onError={(ev) => {
                             ev.target.src = "assets/images/news-post-bg.jpg";
                         }}
