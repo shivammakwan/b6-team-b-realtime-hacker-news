@@ -12,7 +12,7 @@ function NewsPost({
     return (
         <div className="w-full md:w-1/2 lg:w-1/4 p-3">
             <div className="rounded-lg border hover:shadow-md">
-                <div className="relative">
+                <div className="relative overflow-y-hidden" style={{ maxHeight: "210px" }}>
                     <img
                         src={postImage}
                         onError={(ev) => {
