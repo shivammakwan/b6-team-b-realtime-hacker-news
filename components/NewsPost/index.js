@@ -1,6 +1,6 @@
 import React from "react";
 
-function NewsPost({ hideDesc = false }) {
+function NewsPost({ title = "Title", description = "Description", author = "Author", hideDesc = false }) {
     return (
         <div className="w-full md:w-1/2 lg:w-1/4 p-3">
             <div className="rounded-lg border hover:shadow-md">
@@ -19,9 +19,9 @@ function NewsPost({ hideDesc = false }) {
                         <span className="text-xs text-red-400 font-bold">15-04-2021</span>
                         <span className="text-xs text-gray-600 font-semibold">0 Comments</span>
                     </div>
-                    <h1 className="mt-1 text-sm text-right text-gray-800 font-medium">Author Name</h1>
-                    <h1 className="mt-2 text-black font-bold">Some Title</h1>
-                    {!hideDesc && <p className="text-gray-500 text-sm mt-3">Some Description</p>}
+                    <h1 className="mt-1 text-sm text-right text-gray-800 font-medium">{author}</h1>
+                    <h1 className="mt-2 text-black font-bold">{title}</h1>
+                    {!hideDesc && <p className="text-gray-500 text-sm mt-3">{description}</p>}
                 </div>
             </div>
         </div>
