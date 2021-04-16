@@ -13,13 +13,14 @@ function NewsPost({
     return (
         <div className="w-full md:w-1/2 lg:w-1/4 p-3">
             <div className="rounded-lg border shadow-md hover:shadow-lg">
-                <div className="relative overflow-y-hidden" style={{ maxHeight: "210px" }}>
+                <div className="relative overflow-y-hidden" style={{ minHeight: "210px", maxHeight: "210px" }}>
                     <img
                         src={postImage}
                         onError={(ev) => {
                             ev.target.src = "assets/images/news-post-bg.jpg";
                         }}
                         className="rounded-tl-lg rounded-tr-lg"
+                        style={{ minHeight: "210px" }}
                     />
                     <span className="absolute top-2 bg-green-400 text-white py-1 px-2 text-xs rounded-tr-sm rounded-br-md">
                         {noOfPoints} Points
