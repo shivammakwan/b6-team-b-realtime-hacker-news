@@ -8,10 +8,17 @@ function NewsPost({
     noOfPoints = 0,
     postDate = "Date",
     postImage = "assets/images/news-post-bg.jpg",
+    postUrl = "",
     hideDesc = false,
 }) {
+    const handlePostUrl = () => {
+        if (postUrl !== "") {
+            window.open(postUrl, "_blank");
+        }
+    };
+
     return (
-        <div className="w-full md:w-1/2 lg:w-1/4 p-3 cursor-pointer">
+        <div className="w-full md:w-1/2 lg:w-1/4 p-3 cursor-pointer" onClick={handlePostUrl}>
             <div className="rounded-lg border shadow-md hover:shadow-lg">
                 <div className="relative overflow-y-hidden" style={{ minHeight: "210px", maxHeight: "210px" }}>
                     <img
