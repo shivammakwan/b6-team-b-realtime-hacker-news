@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import NewsPost from "../components/NewsPost";
 import styles from "../styles/Home.module.css";
 
@@ -35,6 +37,7 @@ export default function Home() {
                                     postDate={newsPost.createdAt}
                                     postImage={newsPost.imageUrl}
                                     noOfPoints={newsPost.votes}
+                                    author={newsPost.user.firstname + " " + newsPost.user.lastname}
                                 />
                             );
                         })}
