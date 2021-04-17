@@ -13,6 +13,14 @@ export default async function (request, response) {
                     createdAt: "desc",
                 },
             ],
+            include: {
+                user: {
+                    select: {
+                        firstname: true,
+                        lastname: true,
+                    },
+                },
+            },
         });
 
         response.status(200).json(latestAsks);
