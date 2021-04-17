@@ -38,6 +38,7 @@ export default function Home() {
                                     postImage={newsPost.imageUrl}
                                     noOfPoints={newsPost.votes}
                                     author={newsPost.user.firstname + " " + newsPost.user.lastname}
+                                    postUrl={newsPost.postUrl}
                                 />
                             );
                         })}
