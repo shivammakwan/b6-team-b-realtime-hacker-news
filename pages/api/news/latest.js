@@ -5,6 +5,9 @@ export default async function (request, response) {
 
     try {
         const latestAsks = await prisma.post_master.findMany({
+            where: {
+                type: "news",
+            },
             orderBy: [
                 {
                     createdAt: "desc",
