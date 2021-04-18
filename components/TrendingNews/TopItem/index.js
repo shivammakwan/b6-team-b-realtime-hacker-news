@@ -2,7 +2,7 @@ import React from "react";
 
 const TopItem = ({ imageUrl, date, title,id}) => {
     return (
-        <div key={id} className="flex flex-col-reverse ml-2 mr-1 h-96 w-7/12 shadow-md hover:shadow-lg  rounded-2xl  ">
+        <div key={id} className="flex flex-col-reverse ml-1 mr-1 h-96 w-8/12 shadow-md hover:shadow-lg  rounded-2xl  ">
         <div className=" z-10 relative  overflow-hidden rounded-2xl ">
         <img src={imageUrl} className=" rounded-lg bg-gray-800 text-gray-100 scale-100 transform hover:transition duration-500 hover:scale-150" />
         </div>
@@ -14,7 +14,7 @@ const TopItem = ({ imageUrl, date, title,id}) => {
         </svg>
         <span className="ml-1 mt-1 text-sm font-serif text-yellow-100 hover:text-green-100">{date}</span>
         </div>
-                <h1 className="ml-1 font-bold text-lg text-white hover:text-red-500">{title}</h1>
+                <h1 className="ml-2 font-bold text-2xl text-white hover:text-red-500">{title}</h1>
             </div>
         </div>
     );

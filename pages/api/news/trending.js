@@ -46,10 +46,10 @@ export default async function (request, response) {
         });
         response.status(200).json(trendingNews);
     } catch (error) {
-        console.log("server error " + error);
+        console.log("Catch => server error: " + error.message);
         response.status(500).json({
             status: "error",
-            message: "Unable To Fetch Latest Ask Posts",
+            message: "Unable To Fetch Trending News Posts",
         });
     } finally {
         prisma.$disconnect();

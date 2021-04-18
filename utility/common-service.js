@@ -30,6 +30,8 @@ const get_nth_suffix = (date) => {
 };
 const date_Format = (val) => val.getDate() + get_nth_suffix(val.getDate()) + " " + monthNames[val.getMonth()] + " " + val.getFullYear();
 
-export {
- date_Format   
-}
+const fetcher = async (path) => {
+    const res = await fetch(path);
+    return res.json();
+};
+export { date_Format, fetcher };
