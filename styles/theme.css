@@ -41,3 +41,29 @@
     color: #cccccc;
     font-weight: 600;
 }
+
+.home-news-post-title {
+    position: relative;
+}
+.home-news-post-title::before {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 80%;
+    background: #f63a3a;
+}
+
+@media screen and (max-width: 600px) {
+    .home-news-post-title::before {
+        width: 45%;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1000px) {
+    .home-news-post-title::before {
+        width: 55%;
+    }
+}
