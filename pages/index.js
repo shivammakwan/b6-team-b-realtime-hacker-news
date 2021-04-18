@@ -2,10 +2,12 @@ import Link from "next/link";
 
 import NewsPost from "../components/NewsPost";
 import styles from "../styles/Home.module.css";
+import TrendingNews from "../components/TrendingNews";
 
 import useSWR from "swr";
 
 const fetchLatestNewsPost = (url) => fetch(url).then((r) => r.json());
+
 
 export default function Home() {
     const { data: latestNewsPost, error: latestNewsPostError } = useSWR("/api/news/latest", fetchLatestNewsPost("/api/news/latest"));
@@ -13,7 +15,7 @@ export default function Home() {
     return (
         <>
             <div className={styles.main}>
-                <h1 className={styles.title}>Trending News</h1>
+                <TrendingNews/>
 
                 <h1 className={styles.title}>Asks</h1>
 
