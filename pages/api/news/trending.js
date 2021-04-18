@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { date_Format } from "../../../utility/common-service";
 const prisma = new PrismaClient();
 
 export default async function (request, response) {
@@ -14,6 +15,9 @@ export default async function (request, response) {
             orderBy: [
                 {
                     votes: "desc",
+                },
+                {
+                    createdAt: "asc",
                 },
             ],
             include: {
@@ -37,21 +41,17 @@ export default async function (request, response) {
                 desc: trending_news.description,
                 votes: trending_news.votes,
                 postid: trending_news.id,
-                date:trending_news.createdAt    
+                date: date_Format(trending_news.createdAt),
             };
         });
-
-        // response.status(200).json({
-        //     status: "success",
-        //     message: "list of trending news",
-        //     data:trendingNews});
-            response.status(200).json(trendingNews);
+        response.status(200).json(trendingNews);
     } catch (error) {
-        console.log('server error '+ error)
+        console.log("server error " + error);
         response.status(500).json({
             status: "error",
             message: "Unable To Fetch Latest Ask Posts",
         });
-    }finally{
-        prisma.$disconnect()     
-}}
+    } finally {
+        prisma.$disconnect();
+    }
+}
