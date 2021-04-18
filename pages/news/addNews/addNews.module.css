@@ -1,0 +1,11 @@
+.addNews {
+    display: grid;
+    place-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.addNews__form {
+    display: flex;
+    flex-direction: column;
+}
