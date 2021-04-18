@@ -73,10 +73,14 @@ const TrendingNews = (props) => {
                 <div className="flex flex-col ml-1">
                     {data &&
                         data
-                            .slice(0,4)
+                            .slice(0, 4)
                             .map((post) => (
                                 <div key={post.trending_id}>
-                                    {post.trending_id !== 1 ? <TrendingItem id={post.trending_id} title={post.title} date={post.date} imageUrl={post.image} /> : ``}
+                                    {post.trending_id !== 1 ? (
+                                        <TrendingItem id={post.trending_id} title={post.title} date={post.date} imageUrl={post.image} />
+                                    ) : (
+                                        ``
+                                    )}
                                 </div>
                             ))}
                 </div>

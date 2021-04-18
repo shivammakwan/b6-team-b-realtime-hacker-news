@@ -2,9 +2,9 @@ import React from "react";
 
 const TopItem = ({ imageUrl, date, title,id}) => {
     return (
-        <div key={id} className="flex flex-col-reverse ml-2 mr-2  h-auto w-7/12 px-2">
-        <div className=" z-10 relative  overflow-hidden  rounded-lg  ">
-        <img src={imageUrl} className=" rounded-lg bg-gray-800 text-gray-100 h-96 w-full scale-100 transform hover:transition duration-500 hover:scale-150" />
+        <div key={id} className="flex flex-col-reverse ml-2 mr-1 h-96 w-7/12 shadow-md hover:shadow-lg  rounded-2xl  ">
+        <div className=" z-10 relative  overflow-hidden rounded-2xl ">
+        <img src={imageUrl} className=" rounded-lg bg-gray-800 text-gray-100 scale-100 transform hover:transition duration-500 hover:scale-150" />
         </div>
 
             <div className="absolute flex-start m-6  z-30">
