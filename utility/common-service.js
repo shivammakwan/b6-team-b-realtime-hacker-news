@@ -1,3 +1,4 @@
+import fetch from "unfetch";
 const monthNames = [
     "January",
     "February",
@@ -30,6 +31,9 @@ const get_nth_suffix = (date) => {
 };
 const date_Format = (val) => val.getDate() + get_nth_suffix(val.getDate()) + " " + monthNames[val.getMonth()] + " " + val.getFullYear();
 
-export {
- date_Format   
-}
+const fetcher = async (path) => {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`Something went wrong. Please try again.`);
+    return await res.json();
+};
+export { date_Format, fetcher };
