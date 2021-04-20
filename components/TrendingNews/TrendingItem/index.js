@@ -1,15 +1,15 @@
 import React from "react";
-
-const TrendingItem = ({ onClick, imageUrl, date, title, id }) => {
+import Link from "next/link";
+const TrendingItem = ({ imageUrl, date, title, id, posturl }) => {
     return (
+        <Link href={posturl} passHref={true}>
         <div
             key={id}
-            className="flex  flex-col mb-2 justify-between ml-3 h-auto w-96 p-1 shadow-md hover:shadow-lg rounded-xl"
-            onClick={onClick}
+            className="flex  flex-col m-2 p-2 h-auto w-full md:w-96 lg:w-96 shadow-md hover:shadow-lg rounded-xl"
         >
-            <div className="flex flex-row h-30 w-full mt-2 p-1">
-                <img src={imageUrl} className="rounded-lg h-24 w-28 hover:opacity-70 " />
-                <div className="flex flex-col ml-2 mt-1 pl-1 justify-start  overflow-hidden">
+            <div className="flex flex-row h-20 w-full my-1 ">
+                <img src={imageUrl} className="rounded-xl h-20 w-20 hover:opacity-70 p-1 " />
+                <div className="flex flex-col  p-1 justify-start">
                     <div className="flex flex-row items-center mt-2">
                         <svg
                             class="h-6"
@@ -28,10 +28,13 @@ const TrendingItem = ({ onClick, imageUrl, date, title, id }) => {
                         </svg>
                         <span className="ml-1 items-center text-sm font-serif text-gray-500 hover:text-green-300">{date}</span>
                     </div>
-                    <h1 className="ml-1 font-bold text-sm from-gray-900 hover:text-red-500">{title}</h1>
+                    <h1 className="ml-1 font-semibold md:font-bold text-xs md:text-sm from-gray-900 hover:text-red-500">
+                        {title.length < 76 ? title : title.substr(0, 76) + "..."}
+                    </h1>
                 </div>
             </div>
         </div>
+        </Link>
     );
 };
 
