@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { API_LINK, POST_TYPE_NEWS, POST_TYPE_ASK } from "../utility/constants";
+import { URL, POST_TYPE_NEWS, POST_TYPE_ASK } from "../utility/constants";
 
 function usePost() {
     const [title, setTitle] = useState("");
@@ -10,7 +10,7 @@ function usePost() {
     const onAskSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`${API_LINK}/addPost`, {
+        fetch(`${URL}/addPost`, {
             method: "POST",
             body: JSON.stringify({
                 type: POST_TYPE_ASK,
@@ -31,7 +31,7 @@ function usePost() {
     const onNewsSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`${API_LINK}/addPost`, {
+        fetch(`${URL}/addPost`, {
             method: "POST",
             body: JSON.stringify({
                 type: POST_TYPE_NEWS,
