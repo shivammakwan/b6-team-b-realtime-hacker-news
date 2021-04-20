@@ -3,7 +3,7 @@ import Link from "next/link";
 const TopItem = ({ imageUrl, date, title, id, posturl }) => {
     return (
         <Link href={posturl} passHref={true}>
-            <div key={id} className="flex flex-col w-full md:w-8/12 lg:w-8/12 rounded-2xl m-1 p-2 justify-end  ">
+            <div key={id} className="flex flex-col w-full md:w-8/12 lg:w-8/12 rounded-2xl m-1 p-2  cursor-pointer justify-end  ">
                 <div className=" z-10 relative overflow-hidden rounded-2xl w-full">
                     <img
                         src={imageUrl}

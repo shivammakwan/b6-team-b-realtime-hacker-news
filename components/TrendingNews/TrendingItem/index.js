@@ -5,7 +5,7 @@ const TrendingItem = ({ imageUrl, date, title, id, posturl }) => {
         <Link href={posturl} passHref={true}>
         <div
             key={id}
-            className="flex  flex-col m-2 p-2 h-auto w-full md:w-96 lg:w-96 shadow-md hover:shadow-lg rounded-xl"
+            className="flex  cursor-pointer flex-col m-2 p-2 h-auto w-full md:w-96 lg:w-96 shadow-md hover:shadow-lg rounded-xl"
         >
             <div className="flex flex-row h-20 w-full my-1 ">
                 <img src={imageUrl} className="rounded-xl h-20 w-20 hover:opacity-70 p-1 " />
