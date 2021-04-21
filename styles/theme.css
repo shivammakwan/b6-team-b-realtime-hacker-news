@@ -45,6 +45,7 @@
 .home-news-post-title {
     position: relative;
 }
+
 .home-news-post-title::before {
     position: absolute;
     content: "";
