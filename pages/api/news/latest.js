@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
-
+//import { PrismaClient } from "@prisma/client";
+import prisma from "../../../prisma/connection-pool"
 export default async function (request, response) {
-    const prisma = new PrismaClient({ log: ["query"] });
+   // const prisma = new PrismaClient({ log: ["query"] });
 
     try {
         const latestAsks = await prisma.post_master.findMany({

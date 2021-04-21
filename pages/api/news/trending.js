@@ -1,6 +1,7 @@
-import { PrismaClient } from "@prisma/client"
+//import { PrismaClient } from "@prisma/client"
 import { date_Format } from "../../../utility/common-service"
-const prisma = new PrismaClient();
+import prisma from "../../../prisma/connection-pool"
+//const prisma = new PrismaClient();
 export default async function (request, response) {
     console.info(" Controller => Trending News");
     try {
