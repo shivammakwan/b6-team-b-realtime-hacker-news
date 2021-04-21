@@ -5,7 +5,7 @@ import { fetcher } from "../../utility/common-service";
 import TrendingItem from "../TrendingNews/TrendingItem";
 import TopItem from "./TopItem";
 
-const TrendingNews = (props) => {
+const TrendingNews = () => {
     const { data, error: trendingNewsError } = useSWR(TRENDING_NEWS_API, fetcher);
     let topTrending;
 
@@ -20,7 +20,7 @@ const TrendingNews = (props) => {
     }
 
     return (
-        <div className="flex items-center w-screen h-screen flex-wrap pl-10 my-2 mx-2 py-4 ">
+        <div className="flex w-screen flex-wrap h-auto pl-10 pr-10  ">
             <div className=" flex w-full items-center">
                 <h1 className="font-bold text-sm md:text-3xl px-4 py-1">Trending News</h1>
                 <div className="h-1 w-full mr-10 pr-3 md:w-9/12 bg-red-500"></div>
@@ -33,10 +33,17 @@ const TrendingNews = (props) => {
             {!data && !trendingNewsError && (
                 <h1 className="text-center text-base md:text-3xl text-gray-500 py-8 px-10">Loading Trending News....</h1>
             )}
-            <div className="flex flex-row flex-wrap  items-start pr-5 mr-1">
-                {topTrending && (
-                    <TopItem id={topTrending.trending_id} posturl={topTrending.url} title={topTrending.title} date={topTrending.date} imageUrl={topTrending.image} />
-                )}
+            <div className="flex flex-wrap  items-start pr-5 mr-1">
+                    {topTrending && (
+                        <TopItem
+                            id={topTrending.trending_id}
+                            posturl={topTrending.url}
+                            title={topTrending.title}
+                            date={topTrending.date}
+                            imageUrl={topTrending.image}
+                        />
+                    )}
+                
                 <div className="flex flex-col">
                     {data &&
                         data
@@ -44,7 +51,13 @@ const TrendingNews = (props) => {
                             .map((post) => (
                                 <div key={post.trending_id}>
                                     {post.trending_id !== 1 ? (
-                                        <TrendingItem id={post.trending_id} posturl={post.url} title={post.title} date={post.date} imageUrl={post.image} />
+                                        <TrendingItem
+                                            id={post.trending_id}
+                                            posturl={post.url}
+                                            title={post.title}
+                                            date={post.date}
+                                            imageUrl={post.image}
+                                        />
                                     ) : (
                                         ``
                                     )}

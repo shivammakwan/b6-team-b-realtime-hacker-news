@@ -5,10 +5,10 @@ const TrendingItem = ({ imageUrl, date, title, id, posturl }) => {
         <Link href={posturl} passHref={true}>
         <div
             key={id}
-            className="flex  cursor-pointer flex-col m-2 p-2 h-auto w-full md:w-96 lg:w-96 shadow-md hover:shadow-lg rounded-xl"
+            className="flex  cursor-pointer flex-col m-2 p-2 border h-auto w-full md:w-96 lg:w-96 shadow-md hover:shadow-lg rounded-xl"
         >
-            <div className="flex flex-row h-20 w-full my-1 ">
-                <img src={imageUrl} className="rounded-xl h-20 w-20 hover:opacity-70 p-1 " />
+            <div className="flex flex-row h-full w-full my-1 ">
+                <img src={imageUrl} className="rounded-xl h-20 w-20 object-cover hover:opacity-70 p-1 " />
                 <div className="flex flex-col  p-1 justify-start">
                     <div className="flex flex-row items-center mt-2">
                         <svg
@@ -28,7 +28,7 @@ const TrendingItem = ({ imageUrl, date, title, id, posturl }) => {
                         </svg>
                         <span className="ml-1 items-center text-sm font-serif text-gray-500 hover:text-green-300">{date}</span>
                     </div>
-                    <h1 className="ml-1 font-semibold md:font-bold text-xs md:text-sm from-gray-900 hover:text-red-500">
+                    <h1 className="ml-1 font-bold md:font-bold tmd:text-sm from-gray-900 hover:text-red-500">
                         {title.length < 76 ? title : title.substr(0, 76) + "..."}
                     </h1>
                 </div>
