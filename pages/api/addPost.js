@@ -1,6 +1,6 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+//import { PrismaClient } from '@prisma/client';
+import prisma from "../../../prisma/connection-pool"
+//const prisma = new PrismaClient();
 
 export default async function (req, res) {
   if (req.method === 'POST') {
