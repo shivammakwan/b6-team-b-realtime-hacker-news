@@ -10,7 +10,7 @@ function usePost() {
     const onAskSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`${URL}/addPost`, {
+        fetch(`${URL}/posts/addPost`, {
             method: "POST",
             body: JSON.stringify({
                 type: POST_TYPE_ASK,
@@ -31,7 +31,7 @@ function usePost() {
     const onNewsSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`${URL}/addPost`, {
+        fetch(`${URL}/posts/addPost`, {
             method: "POST",
             body: JSON.stringify({
                 type: POST_TYPE_NEWS,
@@ -51,6 +51,10 @@ function usePost() {
             console.log(error);
         });;
     };
+
+    const FetchPostDetails = () =>{
+        f
+    }
 
     return {
         title,

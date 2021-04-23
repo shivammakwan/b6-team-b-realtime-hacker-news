@@ -45,3 +45,14 @@ model Post_master {
   createdAt        DateTime  @default(now()) @map(name: "created_at")
   updatedAt        DateTime  @updatedAt @map(name: "updated_at")
 }
+
+model Comment {
+  id            Int @id @default(autoincrement())
+  parentId      Int      
+  kids          [Int?]
+  votes         Int       @default(0)
+  text          String
+  user          User?     @relation(fields: [userId], references: [id])
+  userId        Int?
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+}
