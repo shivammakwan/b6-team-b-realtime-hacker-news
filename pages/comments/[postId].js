@@ -12,6 +12,10 @@ export default function Post() {
 
     return (
         <div className="flex flex-col">
+
+            {postDataError && <h1 className="text-center text-xl text-red-300 py-10">Failed To Get Latest News Post, Try Again.</h1>}
+            {!postData && <h1 className="text-center text-xl text-gray-500 py-10">Loading Post Comments...</h1>}
+
             {postData && (
                 <div className="place-items-center">
                     <div className="flex flex-col mx-6 my-4">
