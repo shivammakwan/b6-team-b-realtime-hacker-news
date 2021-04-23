@@ -38,7 +38,7 @@ function NewsPost({
                 <div className="p-5 rounded-bl-lg rounded-br-lg bg-white">
                     <div className="flex justify-between">
                         <span className="text-xs text-red-400 font-bold">{postDate.replace("T", " ").substr(0, postDate.length - 5)}</span>
-                        <Link href={`/post/${id}`}><span className="text-xs text-gray-600 font-semibold">{noOfComments} Comments</span></Link>
+                        <Link href={`/comments/${id}`}><span className="text-xs text-gray-600 font-semibold">{noOfComments} Comments</span></Link>
                     </div>
                     <h1 className="mt-1 text-sm text-right text-gray-800 font-medium">{author}</h1>
                     <h1 className="mt-2 text-black font-bold">{title}</h1>

@@ -25,6 +25,7 @@ model User {
   Post_master Post_master[]
 
   @@map(name: "users")
+  Comment Comment[]
 }
 
 model Post_master {
@@ -44,15 +45,18 @@ model Post_master {
   userDeletedDate  DateTime?
   createdAt        DateTime  @default(now()) @map(name: "created_at")
   updatedAt        DateTime  @updatedAt @map(name: "updated_at")
+  Comment          Comment[]
 }
 
 model Comment {
-  id            Int @id @default(autoincrement())
-  parentId      Int      
-  kids          [Int?]
-  votes         Int       @default(0)
-  text          String
-  user          User?     @relation(fields: [userId], references: [id])
-  userId        Int?
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  id          Int          @id @default(autoincrement())
+  parentId    Int
+  level       Int          @default(1)
+  votes       Int          @default(0)
+  text        String
+  user        User?        @relation(fields: [userId], references: [id])
+  userId      Int?
+  post_master Post_master? @relation(fields: [postId], references: [id])
+  postId      Int?
+  createdAt   DateTime     @default(now()) @map(name: "created_at")
 }

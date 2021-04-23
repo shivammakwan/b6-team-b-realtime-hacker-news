@@ -52,10 +52,6 @@ function usePost() {
         });;
     };
 
-    const FetchPostDetails = () =>{
-        f
-    }
-
     return {
         title,
         setTitle,

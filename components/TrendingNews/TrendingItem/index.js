@@ -12,7 +12,7 @@ const TrendingItem = ({ imageUrl, date, title, id, posturl }) => {
                     <div className="flex flex-col  p-1 justify-start">
                         <div className="flex flex-row items-center mt-2">
                             <svg
-                                class="h-6"
+                                className="h-6"
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5 text-lg font-serif text-gray-600 hover:text-green-300"
                                 fill="none"
