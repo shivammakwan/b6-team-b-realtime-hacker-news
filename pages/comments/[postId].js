@@ -1,43 +1,41 @@
-import Link from "next/link";
-import { fetcher } from "../../utility/common-service";
 import { useRouter } from "next/router";
 import useComment from "../../hooks/useComment";
 import TextArea from "../../components/TextArea";
+import CommentCard from "../../components/CommentCard";
 import Button from "../../components/Button";
-import useSWR from "swr";
-import { FETCH_POST } from "../../utility/constants";
 
 export default function Post() {
     const router = useRouter();
     const { postId } = router.query;
 
-    const { comment, setComment, addComment } = useComment(postId);
-
-    const { data: postData, error: postDataError } = useSWR(FETCH_POST + postId, fetcher);
-
-    console.log(postData);
+    const { comment, postData, postDataError, setComment, addComment } = useComment(postId);
 
     return (
-        <div className=" grid  ">
+        <div className="flex flex-col">
             {postData && (
                 <div className="place-items-center">
-                    <h1 className="text-4xl">{postData.post.title}</h1>
-                    <h5 className="text-s">{postData.post.description}</h5>
-
-                    <form className="flex flex-col" onSubmit={addComment}>
-                        <TextArea text={comment} setText={setComment} placeholder="Write your comment ?" />
-                        <Button text={"Add Comment"} />
-                    </form>
+                    <div className="flex flex-col mx-6 my-4">
+                        <h1 className="text-4xl mb-2">{postData.post.title}</h1>
+                        <h5 className="text-s">{postData.post.description}</h5>
+                    </div>
+                    <div className="flex flex-col mx-6">
+                        <form onSubmit={addComment}>
+                            <TextArea text={comment} setText={setComment} placeholder="Write your comment ?" />
+                            <Button text={"Add Comment"} />
+                        </form>
+                    </div>
                 </div>
             )}
-
-            {postData.comments.map((comment) => {
-                return (
-                    <div>
-                        <p>{comment.text}</p>
-                    </div>
-                );
-            })}
+            <div className="mb-4">
+                {postData &&
+                    postData.comments.map((comment) => {
+                        return (
+                            <div>
+                                <CommentCard key={comment.id} comment={comment.text} userName={"testUser1"} />
+                            </div>
+                        );
+                    })}
+            </div>
         </div>
     );
 }

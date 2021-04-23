@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { URL} from "../utility/constants";
+import { FETCH_POST } from "../utility/constants";
+import { fetcher } from "../utility/common-service";
+import useSWR, { mutate } from "swr";
 
-function useComment(Id) {
+function useComment(id) {
 
-    const postId = parseInt(Id);
     const [comment, setComment] = useState("");
+    const postId = parseInt(id);
+
+    const { data: postData, error: postDataError } = useSWR(FETCH_POST + id , fetcher);
     
     const addComment = (e) =>{
         e.preventDefault();
 
+        const commentsArray = [...postData.comments, {text:comment}]
+
+        mutate(FETCH_POST + id, {...postData, comments: commentsArray}, false);
+        console.log('postdata',postData);
         fetch(`${URL}/posts/addComment`, {
             method: "POST",
             body: JSON.stringify({
@@ -19,7 +28,8 @@ function useComment(Id) {
                 postId:postId
             }),
         }).then(() => {
-            setText("");
+            setComment("");
+            mutate(FETCH_POST + id);
         }).catch((error) => {
             alert(error);
             console.log(error);
@@ -27,7 +37,7 @@ function useComment(Id) {
     }
 
     return {
-        comment, setComment, addComment
+        comment, postData, postDataError, setComment, addComment
     }
 
 }
