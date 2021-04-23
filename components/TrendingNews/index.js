@@ -34,16 +34,16 @@ const TrendingNews = () => {
                 <h1 className="text-center text-base md:text-3xl text-gray-500 py-8 px-10">Loading Trending News....</h1>
             )}
             <div className="flex flex-wrap  items-start pr-5 mr-1">
-                {topTrending && (
-                    <TopItem
-                        id={topTrending.trending_id}
-                        posturl={topTrending.url}
-                        title={topTrending.title}
-                        date={topTrending.date}
-                        imageUrl={topTrending.image}
-                    />
-                )}
-
+                    {topTrending && (
+                        <TopItem
+                            id={topTrending.trending_id}
+                            posturl={topTrending.url}
+                            title={topTrending.title}
+                            date={topTrending.date}
+                            imageUrl={topTrending.image}
+                        />
+                    )}
+                
                 <div className="flex flex-col">
                     {data &&
                         data
