@@ -21,6 +21,7 @@ const HomeNewsSection = () => {
                         return (
                             <NewsPost
                                 key={newsPost.id}
+                                id= {newsPost.id}
                                 title={newsPost.title}
                                 description={newsPost.description}
                                 postDate={newsPost.createdAt}

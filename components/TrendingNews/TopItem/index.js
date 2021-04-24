@@ -13,7 +13,7 @@ const TopItem = ({ imageUrl, date, title, id, posturl }) => {
                 <div className="absolute  z-30 mb-4 py-5  pl-5 px-2 text-left">
                     <div className="flex flex-row items-center mt-2">
                         <svg
-                            class="h-6"
+                            className="h-6"
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5 ml-1 mt-1 text-lg font-serif text-yellow-100 hover:text-green-100"
                             fill="none"

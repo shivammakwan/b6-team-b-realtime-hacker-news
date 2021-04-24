@@ -11,10 +11,11 @@ const TextArea = ({
     check = false,
 }) => {
     return (
-        <div className="my-3 mx-2">
+        <div>
             <textarea
-                className="bg-gray-100 rounded-md w-96 h-8 mb-1 text-left pl-4 text-2xl shadow-lg lg:text-sm w-full h-full"
-                rows="10"
+                className="bg-gray-100 rounded-md mb-1 text-left pl-4 text-2xl shadow-lg lg:text-base"
+                rows="5"
+                cols="50"
                 type="text"
                 placeholder={placeholder}
                 value={text}
