@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id          Int           @id @default(autoincrement())
+  username    String        @unique
+  password    String
+  email       String        @unique
+  firstname   String
+  lastname    String?
+  role        String
+  isActive    Boolean
+  isVerified  Boolean       @default(false)
+  createdAt   DateTime      @default(now()) @map(name: "created_at")
+  updatedAt   DateTime      @updatedAt @map(name: "updated_at")
+  Post_master Post_master[]
+
+  @@map(name: "users")
+  Comment Comment[]
+}
+
+model Post_master {
+  id               Int       @id @default(autoincrement())
+  type             String
+  title            String
+  imageUrl         String?
+  postUrl          String?
+  description      String?
+  votes            Int       @default(0)
+  user             User?     @relation(fields: [userId], references: [id])
+  userId           Int?
+  isActive         Boolean   @default(true)
+  deletedByAdmin   Boolean   @default(false)
+  deletedByUser    Boolean   @default(false)
+  adminDeletedDate DateTime?
+  userDeletedDate  DateTime?
+  createdAt        DateTime  @default(now()) @map(name: "created_at")
+  updatedAt        DateTime  @updatedAt @map(name: "updated_at")
+  Comment          Comment[]
+}
+
+model Comment {
+  id          Int          @id @default(autoincrement())
+  parentId    Int
+  level       Int          @default(1)
+  votes       Int          @default(0)
+  text        String
+  user        User?        @relation(fields: [userId], references: [id])
+  userId      Int?
+  post_master Post_master? @relation(fields: [postId], references: [id])
+  postId      Int?
+  createdAt   DateTime     @default(now()) @map(name: "created_at")
+}

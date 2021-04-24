@@ -1,19 +1,22 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import TextInput from '../components/TextInput'
+import Link from "next/link";
+//import NewsPost from "../components/NewsPost";
+import styles from "../styles/Home.module.css";
+import TrendingNews from "../components/TrendingNews";
+import useSWR from "swr";
+import HomeNewsSection from "../components/HomeNewsSection";
+
+//const fetchLatestNewsPost = (url) => fetch(url).then((r) => r.json());
+
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Hacker News</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to HackerNews
-        </h1>
-        <TextInput />
-      </main>
-    </div>
-  )
+    // const { data: latestNewsPost, error: latestNewsPostError } = useSWR("/api/news/latest", fetchLatestNewsPost("/api/news/latest"));
+
+    return (
+        <>
+            <div className={styles.main}>
+                <TrendingNews />
+                <h1 className={styles.title}>Asks</h1>
+                <HomeNewsSection />
+            </div>
+        </>
+    );
 }
