@@ -26,6 +26,7 @@ model User {
 
   @@map(name: "users")
   Comment Comment[]
+  Like Like[]
 }
 
 model Post_master {
@@ -58,5 +59,13 @@ model Comment {
   userId      Int?
   post_master Post_master? @relation(fields: [postId], references: [id])
   postId      Int?
+  createdAt   DateTime     @default(now()) @map(name: "created_at")
+}
+
+model Like {
+  id          Int          @id @default(autoincrement())
+  parentId    Int
+  user        User        @relation(fields: [userId], references: [id])
+  userId      Int
   createdAt   DateTime     @default(now()) @map(name: "created_at")
 }

@@ -52,6 +52,19 @@ function usePost() {
         });;
     };
 
+    const onVote = (postId) =>{
+
+        fetch(`${URL}/posts/likePost`, {
+            method: 'POST',
+            body: JSON.stringify({
+                parentId: postId,
+                userId: 1,
+            })
+        }).catch((error) =>{
+            console.log(error);
+        });
+    }
+
     return {
         title,
         setTitle,
@@ -63,6 +76,7 @@ function usePost() {
         setimageUrl,
         onNewsSubmit,
         onAskSubmit,
+        onVote
     };
 }
 
