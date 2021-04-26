@@ -1,9 +1,9 @@
 import styles from "../../../styles/Home.module.css";
-import TextInput from "../../../components/TextInput";
-import Button from "../../../components/Button";
+import TextInput from "../../../shared/components/TextInput";
+import Button from "../../../shared/components/Button";
 import usePost from "../../../hooks/usePost";
 import addNewsStyles from "./addNews.module.css";
-import TextArea from "../../../components/TextArea";
+import TextArea from "../../../shared/components/TextArea";
 
 export default function AddNews() {
     const { title, setTitle, description, setDescription, postUrl, setPostUrl, imageUrl, setimageUrl, onNewsSubmit } = usePost();
