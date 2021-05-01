@@ -13,7 +13,7 @@ const TextArea = ({
     return (
         <div>
             <textarea
-                className="bg-gray-100 rounded-md mb-1 text-left pl-4 text-2xl shadow-lg lg:text-base"
+                className="mx-2 bg-gray-100 rounded-md mb-1 text-left pl-4 text-2xl shadow-lg lg:text-base"
                 rows="5"
                 cols="50"
                 type="text"
