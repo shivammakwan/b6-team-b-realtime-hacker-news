@@ -15,10 +15,10 @@ export default function AddNews() {
             </div>
             <div>
                 <form className={addNewsStyles.addNews__form} onSubmit={onNewsSubmit}>
-                    <TextInput text={title} setText={setTitle} placeholder={"News Title"} required />
-                    <TextArea text={description} setText={setDescription} placeholder={"Description"} required />
-                    <TextInput text={postUrl} setText={setPostUrl} placeholder={"News Link"} required />
-                    <TextInput text={imageUrl} setText={setimageUrl} placeholder={"News Image"}  />
+                    <TextInput text={title} setText={setTitle} placeholder={"News Title"} />
+                    <TextArea text={description} setText={setDescription} placeholder={"Description"} />
+                    <TextInput text={postUrl} setText={setPostUrl} placeholder={"News Link"} />
+                    <TextInput text={imageUrl} setText={setimageUrl} placeholder={"News Image"} />
                     <Button className={addNewsStyles.addNews__submit} text={"Submit News"} />
                 </form>
             </div>
