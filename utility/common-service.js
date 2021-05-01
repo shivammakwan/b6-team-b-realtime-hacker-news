@@ -36,5 +36,4 @@ const fetcher = async (path) => {
     if (!res.ok) throw new Error(`Something went wrong. Please try again.`);
     return await res.json();
 };
-
 export { date_Format, fetcher };
