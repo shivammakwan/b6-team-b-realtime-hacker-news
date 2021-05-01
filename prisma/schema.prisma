@@ -1,10 +1,13 @@
-generator client {
-  provider = "prisma-client-js"
-}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
 }
 
 model User {
@@ -17,13 +20,12 @@ model User {
   role        String
   isActive    Boolean
   isVerified  Boolean       @default(false)
-  createdAt   DateTime      @default(now()) @map("created_at")
-  updatedAt   DateTime      @updatedAt @map("updated_at")
-  Comment     Comment[]
-  Like        Like[]        @relation("LikeTousers")
+  createdAt   DateTime      @default(now()) @map(name: "created_at")
+  updatedAt   DateTime      @updatedAt @map(name: "updated_at")
   Post_master Post_master[]
 
-  @@map("users")
+  @@map(name: "users")
+  Comment Comment[]
 }
 
 model Post_master {
@@ -34,18 +36,16 @@ model Post_master {
   postUrl          String?
   description      String?
   votes            Int       @default(0)
+  user             User?     @relation(fields: [userId], references: [id])
   userId           Int?
   isActive         Boolean   @default(true)
   deletedByAdmin   Boolean   @default(false)
   deletedByUser    Boolean   @default(false)
   adminDeletedDate DateTime?
   userDeletedDate  DateTime?
-  createdAt        DateTime  @default(now()) @map("created_at")
-  updatedAt        DateTime  @updatedAt @map("updated_at")
-  user             User?     @relation(fields: [userId], references: [id])
+  createdAt        DateTime  @default(now()) @map(name: "created_at")
+  updatedAt        DateTime  @updatedAt @map(name: "updated_at")
   Comment          Comment[]
-
-  @@index([userId], name: "userId")
 }
 
 model Comment {
@@ -54,22 +54,9 @@ model Comment {
   level       Int          @default(1)
   votes       Int          @default(0)
   text        String
-  userId      Int?
-  createdAt   DateTime     @default(now()) @map("created_at")
-  postId      Int?
-  post_master Post_master? @relation(fields: [postId], references: [id])
   user        User?        @relation(fields: [userId], references: [id])
-
-  @@index([postId], name: "postId")
-  @@index([userId], name: "userId")
-}
-
-model Like {
-  id         Int      @id @default(autoincrement())
-  parentId   Int
-  userId     Int
-  created_at DateTime @default(now())
-  users      User     @relation("LikeTousers", fields: [userId], references: [id])
-
-  @@index([userId], name: "userId")
+  userId      Int?
+  post_master Post_master? @relation(fields: [postId], references: [id])
+  postId      Int?
+  createdAt   DateTime     @default(now()) @map(name: "created_at")
 }
