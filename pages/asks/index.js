@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
-import Button from "../../shared/components/Button";
+import Button from "../../components/Button";
 
 export default function Asks() {
     return (

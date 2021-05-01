@@ -1,12 +1,7 @@
-import prisma from "../../../prisma/connection-pool";
-import { date_Format } from "../../../utility/common-service";
-/* 
-This api is used for fetching trending news post
-
-API: /api/news/trending 
-
-*/
-
+//import { PrismaClient } from "@prisma/client"
+import { date_Format } from "../../../utility/common-service"
+import prisma from "../../../prisma/connection-pool"
+//const prisma = new PrismaClient();
 export default async function (request, response) {
     console.info(" Controller => Trending News");
     try {
