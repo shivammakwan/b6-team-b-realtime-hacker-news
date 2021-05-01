@@ -1,5 +1,5 @@
 import React from "react";
-import Link from 'next/link'
+import Link from "next/link";
 
 function NewsPost({
     id,
@@ -37,11 +37,15 @@ function NewsPost({
                 </div>
                 <div className="p-5 rounded-bl-lg rounded-br-lg bg-white">
                     <div className="flex justify-between">
-                        <span className="text-xs text-red-400 font-bold">{postDate.replace("T", " ").substr(0, postDate.length - 5)}</span>
-                        <Link href={`/comments/${id}`}><span className="text-xs text-gray-600 font-semibold cursor-pointer">{noOfComments} Comments</span></Link>
+                        <span className="text-xs text-red-400 font-bold">{postDate}</span>
+                        <Link href={`/comments/${id}`}>
+                            <span className="text-xs text-gray-600 font-semibold cursor-pointer">{noOfComments} Comments</span>
+                        </Link>
                     </div>
                     <h1 className="mt-1 text-sm text-right text-gray-800 font-medium">{author}</h1>
-                    <h1 className="mt-2 text-black font-bold cursor-pointer" onClick={handlePostUrl}>{title}</h1>
+                    <h1 className="mt-2 text-black font-bold cursor-pointer" onClick={handlePostUrl}>
+                        {title}
+                    </h1>
                     {!hideDesc && (
                         <p className="text-gray-500 text-sm mt-3">
                             {description.length < 150 ? description : description.substr(0, 150) + "..."}

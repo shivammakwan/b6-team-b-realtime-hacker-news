@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
-import Button from "../../components/Button";
+import Button from "../../shared/components/Button";
 
 export default function News() {
     return (
