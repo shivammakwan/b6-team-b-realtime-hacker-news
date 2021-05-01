@@ -15,8 +15,8 @@ export default function AddAsk() {
             </div>
             <div>
                 <form className={addAskStyles.addAsk__form} onSubmit={onAskSubmit}>
-                    <TextInput text={title} setText={setTitle} placeholder={"Ask HN"} />
-                    <TextArea text={description} setText={setDescription} placeholder={"Ask HN Description"} />
+                    <TextInput text={title} setText={setTitle} placeholder={"Ask HN"} required />
+                    <TextArea text={description} setText={setDescription} placeholder={"Ask HN Description"} required />
                     <Button text={"Ask HN"} />
                 </form>
             </div>
