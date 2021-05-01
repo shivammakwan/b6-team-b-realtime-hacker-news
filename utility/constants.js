@@ -7,3 +7,4 @@ export const POST_TYPE_JOB = "job";
 export const TRENDING_NEWS_API = `/api/news/trending`;
 export const LATEST_NEWS_API = `/api/news/latest`;
 export const FETCH_POST = `/api/posts/`;
+export const FETCH_VOTE_COUNT = `/api/posts/vote/`;

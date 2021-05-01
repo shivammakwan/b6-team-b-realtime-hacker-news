@@ -22,7 +22,7 @@ function NewsPost({
         }
     };
 
-    const { onUpVote, upVote } = useVote(id);
+    const { onUpVote, upVote, onUnVote, voteCount } = useVote(id);
 
     return (
         <div className="w-full md:w-1/2 lg:w-1/4 p-3">
@@ -38,7 +38,7 @@ function NewsPost({
                     />
 
                     <span className="absolute top-2 bg-green-400 text-white py-1 px-2 text-xs rounded-tr-sm rounded-br-md">
-                        {noOfPoints} Points
+                        {voteCount} Points
                     </span>
                 </div>
                 <div className="p-5 rounded-bl-lg rounded-br-lg bg-white">
@@ -48,14 +48,14 @@ function NewsPost({
                             <span className="text-xs text-gray-600 font-semibold cursor-pointer">{noOfComments} Comments</span>
                         </Link>
                     </div>
-                    <div class="flex justify-between">
+                    <div className="flex justify-between">
                         <span className="flex">
                             {!upVote ? (
                                 <Icon onClick={onUpVote} >
                                     {" "}
                                     <ArrowDropUpIcon className="cursor-pointer" />
                                 </Icon>
-                            ) : (<p className="text-sm text-green-400 mt-2 font-bold bold cursor-pointer">Unvote</p>)}
+                            ) : (<p className="text-sm text-green-400 mt-2 font-bold bold cursor-pointer" onClick={onUnVote}>Unvote</p>)}
                         </span>
                         <span className="mt-1 text-sm text-right text-gray-500 font-medium">{author}</span>
                     </div>

@@ -1,32 +1,51 @@
 import { useEffect, useState } from "react";
-import {URL} from "../utility/constants";
-import useSWR from "swr";
+import { URL, FETCH_VOTE_COUNT } from "../utility/constants";
+import useSWR, { mutate } from "swr";
+import { fetcher } from "../utility/common-service";
 
-function useVote(postId) {
-
-    const {data : voteData, error: voteDataError} = useSWR()
+function useVote(id) {
+    const postId = parseInt(id);
+    const userId = 1;
+    const { data: voteCount, error: voteCountError } = useSWR(FETCH_VOTE_COUNT + postId, fetcher);
 
     const [upVote, setUpVote] = useState(false);
 
     const onUpVote = () => {
         setUpVote(true);
-        fetch(`${URL}/posts/likePost`,{
-            method: 'POST',
+        mutate(FETCH_VOTE_COUNT + postId, voteCount + 1, false);
+        fetch(`${URL}/posts/likePost`, {
+            method: "POST",
             body: JSON.stringify({
                 parentId: postId,
-                userId: 1,
-            })
-        }).catch((error)=>{
-            console.log(error);
+                userId: userId,
+            }),
         })
-    } 
+            .then(() => {
+                mutate(FETCH_VOTE_COUNT + postId);
+            })
+            .catch((error) => {
+                setUpVote(false);
+                console.log(error);
+            });
+    };
 
-    useEffect(() => {
+    const onUnVote = () => {
+        setUpVote(false);
+        mutate(FETCH_VOTE_COUNT + postId, voteCount - 1, false);
+        fetch(`${URL}/posts/vote/deleteVote/${userId}/${postId}`,{
+            method: "DELETE"
+        }).then((res)=> {
+            console.log(res);
+        }).catch((error)=> {
+            setUpVote(true);
+            console.log(error);
+            alert(error.message);
+        })
+    }
 
-    },[upVote])
+    useEffect(() => {}, [upVote]);
 
-    return {onUpVote, upVote};
-
+    return { onUpVote, upVote, onUnVote, voteCount };
 }
 
 export default useVote;
