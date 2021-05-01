@@ -1,7 +1,7 @@
 import "../styles/theme.css";
 import "../styles/globals.css";
 import "tailwindcss/tailwind.css";
-import MainLayout from "../shared/components/Layout";
+import MainLayout from "../shared/components/Layout/index";
 
 function MyApp({ Component, pageProps }) {
     return (
