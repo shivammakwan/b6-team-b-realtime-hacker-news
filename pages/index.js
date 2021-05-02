@@ -12,11 +12,9 @@ export default function Home() {
 
     return (
         <>
-            <div className={styles.main}>
-                <TrendingNews />
+            <TrendingNews />
                 <h1 className={styles.title}>Asks</h1>
                 <HomeNewsSection />
-            </div>
         </>
     );
 }

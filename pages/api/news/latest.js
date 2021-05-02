@@ -29,5 +29,7 @@ export default async function (request, response) {
             status: "error",
             message: "Unable To Fetch Latest Ask Posts",
         });
+    } finally {
+        prisma.$disconnect();
     }
 }

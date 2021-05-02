@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React from "react";
 import Link from 'next/link'
 
+=======
+import React, { useContext } from "react";
+import Link from "next/link";
+import { UserContext } from "../../lib/UserContext";
+>>>>>>> refactor-with-magic-link-login
 function NewsPost({
     id,
     title = "Title",
@@ -13,6 +19,7 @@ function NewsPost({
     postUrl = "",
     hideDesc = false,
 }) {
+    const { user, setUser } = useContext(UserContext);
     const handlePostUrl = () => {
         if (postUrl !== "") {
             window.open(postUrl, "_blank");
@@ -37,8 +44,10 @@ function NewsPost({
                 </div>
                 <div className="p-5 rounded-bl-lg rounded-br-lg bg-white">
                     <div className="flex justify-between">
-                        <span className="text-xs text-red-400 font-bold">{postDate.replace("T", " ").substr(0, postDate.length - 5)}</span>
-                        <Link href={`/comments/${id}`}><span className="text-xs text-gray-600 font-semibold cursor-pointer">{noOfComments} Comments</span></Link>
+                        <span className="text-xs text-red-400 font-bold">{postDate}</span>
+                        <Link href={user.isSignIn ? `/comments/${id}` : `/login`}>
+                            <span className="text-xs text-gray-600 font-semibold cursor-pointer">{noOfComments} Comments</span>
+                        </Link>
                     </div>
                     <h1 className="mt-1 text-sm text-right text-gray-800 font-medium">{author}</h1>
                     <h1 className="mt-2 text-black font-bold cursor-pointer" onClick={handlePostUrl}>{title}</h1>

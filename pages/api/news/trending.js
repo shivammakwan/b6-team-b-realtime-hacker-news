@@ -12,6 +12,7 @@ export default async function (request, response) {
                     gt: 0,
                 },
             },
+            take: 5,
             orderBy: [
                 {
                     votes: "desc",
