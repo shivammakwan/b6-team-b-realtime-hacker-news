@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import React from "react";
-import Link from 'next/link'
-
-=======
 import React, { useContext } from "react";
 import Link from "next/link";
 import { UserContext } from "../../lib/UserContext";
->>>>>>> refactor-with-magic-link-login
 function NewsPost({
     id,
     title = "Title",
@@ -50,7 +44,9 @@ function NewsPost({
                         </Link>
                     </div>
                     <h1 className="mt-1 text-sm text-right text-gray-800 font-medium">{author}</h1>
-                    <h1 className="mt-2 text-black font-bold cursor-pointer" onClick={handlePostUrl}>{title}</h1>
+                    <h1 className="mt-2 text-black font-bold cursor-pointer" onClick={handlePostUrl}>
+                        {title}
+                    </h1>
                     {!hideDesc && (
                         <p className="text-gray-500 text-sm mt-3">
                             {description.length < 150 ? description : description.substr(0, 150) + "..."}
