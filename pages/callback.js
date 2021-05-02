@@ -43,25 +43,7 @@ const authenticateWithServer = async (didToken) => {
   }
     }
   }catch(error){
-  console.log("Error: Callback request " + error);
-            if (err instanceof RPCError) {
-                switch(err.code) {
-                  case RPCErrorCode.MagicLinkFailedVerification:
-                    console.log("Authentication Failed ");
-                    break;
-                  case RPCErrorCode.MagicLinkExpired:
-                    console.log("Session Expired, Please login to continue");
-                    break;
-                  case RPCErrorCode.MagicLinkRateLimited:
-                    console.log("Request Limit Exceeded ");
-                    break;
-                  case RPCErrorCode.UserAlreadyLoggedIn:
-                    console.log("User already logged-In ");
-                    // Handle errors accordingly :)
-                    break;
-                }
-            }
-   };
+  console.log("Error: Callback request " + error);   };
 
   return <Loading />;
 };
