@@ -34,7 +34,7 @@ const date_Format = (val) => val.getDate() + get_nth_suffix(val.getDate()) + " "
 
 const fetcher = async (path) => {
     const res = await fetch(path);
-    if (!res.ok) throw new Error(`Something went wrong. Please try again.`);
+    if (!res.ok) throw new Error(`Error while fetching records.`);
     return await res.json();
 };
 export { date_Format, fetcher };
