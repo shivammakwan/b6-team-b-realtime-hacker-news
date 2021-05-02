@@ -1,8 +1,6 @@
 import React from "react";
-import TextArea from "../../shared/components/TextArea";
-import Button from "../../shared/components/Button";
-
-
+import TextArea from "../../components/TextArea";
+import Button from "../../components/Button";
 
 const CommentForm = ({ comment, setComment, addComment }) => {
     return (

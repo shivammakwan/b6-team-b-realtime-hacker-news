@@ -1,7 +1,7 @@
 import styles from "../../../styles/Home.module.css";
-import TextInput from "../../../shared/components/TextInput";
-import TextArea from "../../../shared/components/TextArea";
-import Button from "../../../shared/components/Button";
+import TextInput from "../../../components/TextInput";
+import TextArea from "../../../components/TextArea";
+import Button from "../../../components/Button";
 import usePost from "../../../hooks/usePost";
 import addAskStyles from "./addAsk.module.css";
 

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
-
+import { UserContext } from "../../lib/UserContext";
 function NewsPost({
     id,
     title = "Title",
@@ -13,6 +13,7 @@ function NewsPost({
     postUrl = "",
     hideDesc = false,
 }) {
+    const { user, setUser } = useContext(UserContext);
     const handlePostUrl = () => {
         if (postUrl !== "") {
             window.open(postUrl, "_blank");
@@ -38,7 +39,7 @@ function NewsPost({
                 <div className="p-5 rounded-bl-lg rounded-br-lg bg-white">
                     <div className="flex justify-between">
                         <span className="text-xs text-red-400 font-bold">{postDate}</span>
-                        <Link href={`/comments/${id}`}>
+                        <Link href={user.isSignIn ? `/comments/${id}` : `/login`}>
                             <span className="text-xs text-gray-600 font-semibold cursor-pointer">{noOfComments} Comments</span>
                         </Link>
                     </div>

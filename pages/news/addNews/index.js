@@ -1,9 +1,9 @@
 import styles from "../../../styles/Home.module.css";
-import TextInput from "../../../shared/components/TextInput";
-import Button from "../../../shared/components/Button";
+import TextInput from "../../../components/TextInput";
+import Button from "../../../components/Button";
 import usePost from "../../../hooks/usePost";
 import addNewsStyles from "./addNews.module.css";
-import TextArea from "../../../shared/components/TextArea";
+import TextArea from "../../../components/TextArea";
 
 export default function AddNews() {
     const { title, setTitle, description, setDescription, postUrl, setPostUrl, imageUrl, setimageUrl, onNewsSubmit } = usePost();
@@ -18,7 +18,7 @@ export default function AddNews() {
                     <TextInput text={title} setText={setTitle} placeholder={"News Title"} required />
                     <TextArea text={description} setText={setDescription} placeholder={"Description"} required />
                     <TextInput text={postUrl} setText={setPostUrl} placeholder={"News Link"} required />
-                    <TextInput text={imageUrl} setText={setimageUrl} placeholder={"News Image"}  />
+                    <TextInput text={imageUrl} setText={setimageUrl} placeholder={"News Image"} />
                     <Button className={addNewsStyles.addNews__submit} text={"Submit News"} />
                 </form>
             </div>
