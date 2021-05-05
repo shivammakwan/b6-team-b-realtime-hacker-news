@@ -14,11 +14,11 @@ export default function News() {
         <>
             <div className="grid grid-rows-1 grid-flow-col">
                 <div className="col-span-8 pl-12">
-                    <h1 className="mt-4 text-xl font-medium">Latest News</h1>
+                    <h1 className="mt-2 text-4xl font-medium">Latest News</h1>
                 </div>
                 <div className="text-right pr-12">
                     <Link href="/news/addNews" passHref>
-                        <Button text={"Submit News"} />
+                        <Button className="mt-2" text={"Submit News"} />
                     </Link>
                 </div>
             </div>
