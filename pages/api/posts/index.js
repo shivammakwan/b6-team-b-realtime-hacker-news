@@ -1,15 +1,15 @@
 import prisma from "../../../prisma/connection-pool";
 
 /* 
-This api is used for fetching all news
+This api is used for fetching all the post
 
-API: /api/news?search={searchKeyword}&take={noOfrecords}&skip={skipNoOfrecords}&orderBy={start/end} 
+API: /api/posts?search={searchKeyword}&take={noOfrecords}&skip={skipNoOfrecords}&orderBy={start/end}&posttype={news/job} 
 
 */
 
 export default async function (request, response) {
-    console.info(" Controller => All News API");
-    const { search, skip, take, orderBy } = request.query;
+    console.info(" Controller => All Posts API");
+    const { search, skip, take, orderBy, posttype } = request.query;
     const o = orderBy === "start" ? "asc" : "desc";
     const or = search
         ? {
@@ -21,7 +21,7 @@ export default async function (request, response) {
         const allPosts = await prisma.post_master.findMany({
             where: {
                 isActive: true,
-                type: "news",
+                type: posttype || undefined,
                 ...or,
             },
             take: Number(take) || undefined,
@@ -32,10 +32,10 @@ export default async function (request, response) {
         });
         response.status(200).json(allPosts);
     } catch (error) {
-        console.log("Catch => server error while fetching All news: " + error.message);
+        console.log("Catch => server error while fetching All posts: " + error.message);
         response.status(500).json({
             status: "error",
-            message: "Error: Unable to fetch all news, Please try again later.",
+            message: "Error: Unable to fetch all Posts, Please try again later.",
         });
     }
 }

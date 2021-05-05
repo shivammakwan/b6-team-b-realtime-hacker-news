@@ -13,9 +13,9 @@ const TextArea = ({
     return (
         <div>
             <textarea
-                className="bg-gray-100 rounded-md mb-1 text-left pl-4 text-2xl shadow-lg lg:text-base"
-                rows="5"
-                cols="50"
+                className="bg-gray-100 rounded-md mb-1 text-left pl-4 text-2xl shadow-lg lg:text-base ml-2"
+                rows="4"
+                cols="49"
                 type="text"
                 placeholder={placeholder}
                 value={text}

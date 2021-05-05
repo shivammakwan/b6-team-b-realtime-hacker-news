@@ -11,7 +11,7 @@ export default function AddAsk() {
     return (
         <div className={addAskStyles.addAsk}>
             <div>
-                <h1 className={styles.title}>Add HN</h1>
+                <h1 className="ml-4 mt-2 text-4xl font-medium">Add HN</h1>
             </div>
             <div>
                 <form className={addAskStyles.addAsk__form} onSubmit={onAskSubmit}>
