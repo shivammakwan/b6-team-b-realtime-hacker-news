@@ -6,7 +6,7 @@ export default function Asks() {
     return (
         <div className="grid grid-rows-1 grid-flow-col">
             <div className="col-span-8 ">
-                <h1 className={styles.title}>Asks Page</h1>
+                <h1 className="mt-2 text-4xl font-medium">Asks Page</h1>
             </div>
             <div>
                 <Link href="/asks/addAsk" passHref>

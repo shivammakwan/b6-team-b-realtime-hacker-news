@@ -6,6 +6,7 @@ function usePost() {
     const [description, setDescription] = useState("");
     const [postUrl, setPostUrl] = useState("");
     const [imageUrl, setimageUrl] = useState("");
+    const [successMessage,setSuccessMessage] = useState("");
 
     const onAskSubmit = (e) => {
         e.preventDefault();
@@ -49,6 +50,8 @@ function usePost() {
                 setDescription("");
                 setPostUrl("");
                 setimageUrl("");
+                alert("News added successfully");
+                setSuccessMessage("News added successfully");
             })
             .catch((error) => {
                 alert(error);

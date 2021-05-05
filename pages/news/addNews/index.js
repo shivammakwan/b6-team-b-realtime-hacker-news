@@ -10,8 +10,9 @@ export default function AddNews() {
 
     return (
         <div className={addNewsStyles.addNews}>
+            
             <div>
-                <h1 className={styles.title}>Add News</h1>
+                <h1 className="mt-2 text-4xl font-medium">Add News</h1>
             </div>
             <div>
                 <form className={addNewsStyles.addNews__form} onSubmit={onNewsSubmit}>
