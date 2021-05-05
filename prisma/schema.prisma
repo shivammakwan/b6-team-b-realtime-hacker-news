@@ -10,6 +10,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Auth {
+  id          Int           @id @default(autoincrement())
+  lastLogin    DateTime     @default(now()) @map(name: "login_at")
+  user             User?     @relation(fields: [userId], references: [id])
+  userId           Int?
+  token    String
+  updatedAt   DateTime      @updatedAt @map(name: "updated_at")
+  logoutAt   DateTime      @default(now()) @map(name: "logout_at")
+  @@map(name: "auth_user")
+}
+
 model User {
   id          Int           @id @default(autoincrement())
   username    String        @unique
@@ -26,6 +37,7 @@ model User {
 
   @@map(name: "users")
   Comment Comment[]
+  Auth Auth[]
 }
 
 model Post_master {

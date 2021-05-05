@@ -1,3 +1,4 @@
+import { PrismaClientValidationError } from "@prisma/client";
 import prisma from "../../../prisma/connection-pool"
 import { date_Format } from "../../../utility/common-service";
 /* 
@@ -42,6 +43,22 @@ export default async function (request, response) {
         });
         response.status(200).json(latest_news);
     } catch (error) {
+        console.log("Catch => server error while fetching Latest News: " + error.message);
+        if (e instanceof PrismaClientValidationError) {
+            switch (e.code) {
+                case "P1000":
+                    console.log("DB Authentication failed.");
+                    break;
+                case "P1001":
+                    console.log("Unable to connect to DB.");
+                    break;
+                case "P1002":
+                    console.log("DB request timeout.");
+                    break;
+                default:
+                    console.log("Error e " + e.message);
+            }
+        }
         response.status(500).json({
             status: "error",
             message: "Unable To Fetch Latest Ask Posts",
