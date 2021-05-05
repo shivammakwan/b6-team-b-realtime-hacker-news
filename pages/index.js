@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <>
             <TrendingNews />
-            <h1 className={styles.title}>Asks</h1>
+            {/* <h1 className={styles.title}>Asks</h1> */}
             <HomeNewsSection />
         </>
     );
