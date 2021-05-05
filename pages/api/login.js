@@ -48,6 +48,10 @@ export default async function login(req, res) {
                     },
                 });
                 console.log("new user created successfully " + JSON.stringify(newuser));
+                const authuser = await prisma.auth.create({
+                  data: { userId: newuser.id, token: req.headers["authorization"].substr(8) },
+              });
+              console.log("created auth id for new user " + authuser.id);
             }
             res.status(200).json(new Response(MESSAGES.VALID_USER, CODES.SUCCESS, STATUS.SUCCESS));
         }
