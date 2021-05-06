@@ -105,7 +105,7 @@ const Header = () => {
                                 )}
                             </div>
                         ) : (
-                            <div className=" text-xl font-medium text-gray-700 py-2 px-5 hover:text-red-500 cursor-pointer">
+                            <div className="hidden md:block lg:block  text-xl font-medium text-gray-700 py-2 px-5 hover:text-red-500 cursor-pointer">
                                 <Link href="/login">Login</Link>
                             </div>
                         )}
@@ -126,6 +126,22 @@ const Header = () => {
                     <li className="p-2 hover:text-red-500 cursor-pointer">
                         <Link href="/asks">Asks</Link>
                     </li>
+                    {user.isSignIn ? (
+                        <>
+                            <hr />{" "}
+                            <li className="p-2 hover:text-red-500 cursor-pointer">
+                                Sign-In as: <span className=" text-xs font-bold">{user.userMetadata.email}</span>
+                            </li>
+                            <li className="p-2 hover:text-red-500 cursor-pointer">Profile Details</li>
+                            <li className="p-2 hover:text-red-500 cursor-pointer" onClick={logout}>
+                                Sign out
+                            </li>
+                        </>
+                    ) : (
+                        <li className="p-2 hover:text-red-500 cursor-pointer">
+                            <Link href="/login">Login</Link>
+                        </li>
+                    )}
                 </ul>
                 <hr />
             </div>
