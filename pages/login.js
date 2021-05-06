@@ -28,7 +28,7 @@ const login = () => {
                     placeholder={"Enter your email"}
                     requiredMsg={`Please type valid Email Id`}
                 />
-                <Button className=" grid place-items-center ml-8" text={"Login"} onClick={() => handleLoginWithEmail()} />
+                <Button text={"Login"} onClick={() => handleLoginWithEmail()} />
                 <p className="text-danger text-red-600 text-small">{errorMsg}</p>
             </Card>
         </div>
