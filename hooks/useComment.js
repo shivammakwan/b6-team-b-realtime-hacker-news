@@ -15,7 +15,7 @@ function useComment(id) {
     const addComment = (e) =>{
         e.preventDefault();
 
-        const commentsArray = [{text:comment},...postData.comments]
+        const commentsArray = [...postData.comments, {text:comment}]
 
         mutate(FETCH_POST + id, {...postData, comments: commentsArray}, false);
         setComment("");
