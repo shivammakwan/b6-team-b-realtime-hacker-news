@@ -112,7 +112,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <div className={`${mobileMenu ? "block" : "hidden"} fixed bg-gray-50 right-0 p-2`}>
+            <div className={`${mobileMenu ? "block" : "hidden"} relative z-10 bg-gray-50 right-0 p-2`}>
                 <ul>
                     <li className="p-2 hover:text-red-500 cursor-pointer">
                         <Link href="/">Home</Link>
@@ -128,10 +128,6 @@ const Header = () => {
                     </li>
                 </ul>
                 <hr />
-                <button className="inline-flex justify-items-center p-2 hover:text-red-500 cursor-pointer">
-                    <img src="assets/images/icon/user.svg" width="20" className="my-auto" />
-                    <span className="ml-2">My Account</span>
-                </button>
             </div>
         </header>
     );

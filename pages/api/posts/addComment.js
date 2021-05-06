@@ -5,7 +5,7 @@ export default async function (req, res) {
     try {
         if (req.method === "POST") {
             const { body } = req;
-            console.log(req);
+            //console.log(req);
             const comment = await prisma.comment.create({ data: JSON.parse(body) });
             res.json(comment);
         }

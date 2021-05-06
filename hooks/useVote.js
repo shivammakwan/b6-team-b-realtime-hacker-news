@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { URL, FETCH_VOTE_COUNT,FETCH_VOTE_STATUS } from "../utility/constants";
+import { URL, FETCH_VOTE_COUNT,FETCH_VOTE_STATUS, FETCH_COMMENT_COUNT } from "../utility/constants";
 import useSWR, { mutate } from "swr";
 import { fetcher } from "../utility/common-service";
 
@@ -7,6 +7,7 @@ function useVote(id) {
     const postId = parseInt(id);
     const userId = 1;
     const { data: voteCount, error: voteCountError } = useSWR(FETCH_VOTE_COUNT + postId, fetcher);
+    const { data: commentCount, error: commentCountError } = useSWR(FETCH_COMMENT_COUNT + postId, fetcher);
     //const { data: ifAlreadyVoted, error: voteStatusError } = useSWR(FETCH_VOTE_STATUS + postId + '/' + userId, fetcher);
 
    // console.log(ifAlreadyVoted);
@@ -53,7 +54,7 @@ function useVote(id) {
 
     useEffect(() => {}, [upVote]);
 
-    return { onUpVote, upVote, onUnVote, voteCount };
+    return { onUpVote, upVote, onUnVote, voteCount, commentCount };
 }
 
 export default useVote;
