@@ -17,7 +17,7 @@ function usePost() {
                 type: POST_TYPE_ASK,
                 title: title,
                 description: description,
-                userId: 1,
+                userId: 12,
             }),
         })
             .then(() => {
@@ -42,7 +42,7 @@ function usePost() {
                 description: description,
                 postUrl: postUrl,
                 imageUrl: imageUrl,
-                userId: 1,
+                userId: 12,
             }),
         })
             .then(() => {

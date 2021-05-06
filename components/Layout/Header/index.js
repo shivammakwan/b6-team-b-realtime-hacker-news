@@ -105,14 +105,14 @@ const Header = () => {
                                 )}
                             </div>
                         ) : (
-                            <div className=" text-xl font-medium text-gray-700 py-2 px-5 hover:text-red-500 cursor-pointer">
+                            <div className="hidden md:block lg:block  text-xl font-medium text-gray-700 py-2 px-5 hover:text-red-500 cursor-pointer">
                                 <Link href="/login">Login</Link>
                             </div>
                         )}
                     </div>
                 </div>
             </div>
-            <div className={`${mobileMenu ? "block" : "hidden"} fixed bg-gray-50 right-0 p-2`}>
+            <div className={`${mobileMenu ? "block" : "hidden"} relative z-10 bg-gray-50 right-0 p-2`}>
                 <ul>
                     <li className="p-2 hover:text-red-500 cursor-pointer">
                         <Link href="/">Home</Link>
@@ -126,12 +126,24 @@ const Header = () => {
                     <li className="p-2 hover:text-red-500 cursor-pointer">
                         <Link href="/asks">Asks</Link>
                     </li>
+                    {user.isSignIn ? (
+                        <>
+                            <hr />{" "}
+                            <li className="p-2 hover:text-red-500 cursor-pointer">
+                                Sign-In as: <span className=" text-xs font-bold">{user.userMetadata.email}</span>
+                            </li>
+                            <li className="p-2 hover:text-red-500 cursor-pointer">Profile Details</li>
+                            <li className="p-2 hover:text-red-500 cursor-pointer" onClick={logout}>
+                                Sign out
+                            </li>
+                        </>
+                    ) : (
+                        <li className="p-2 hover:text-red-500 cursor-pointer">
+                            <Link href="/login">Login</Link>
+                        </li>
+                    )}
                 </ul>
                 <hr />
-                <button className="inline-flex justify-items-center p-2 hover:text-red-500 cursor-pointer">
-                    <img src="assets/images/icon/user.svg" width="20" className="my-auto" />
-                    <span className="ml-2">My Account</span>
-                </button>
             </div>
         </header>
     );

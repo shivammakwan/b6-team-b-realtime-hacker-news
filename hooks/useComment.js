@@ -10,6 +10,7 @@ function useComment(id) {
     const postId = parseInt(id);
 
     const { data: postData, error: postDataError } = useSWR(FETCH_POST + id , fetcher);
+
     
     const addComment = (e) =>{
         e.preventDefault();
@@ -17,7 +18,8 @@ function useComment(id) {
         const commentsArray = [...postData.comments, {text:comment}]
 
         mutate(FETCH_POST + id, {...postData, comments: commentsArray}, false);
-        console.log('postdata',postData);
+        setComment("");
+       // console.log('postdata',postData);
         fetch(`${URL}/posts/addComment`, {
             method: "POST",
             body: JSON.stringify({
@@ -28,7 +30,6 @@ function useComment(id) {
                 postId:postId
             }),
         }).then(() => {
-            setComment("");
             mutate(FETCH_POST + id);
         }).catch((error) => {
             alert(error);

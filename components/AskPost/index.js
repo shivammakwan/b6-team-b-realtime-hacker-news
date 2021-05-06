@@ -5,24 +5,16 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import { Icon } from "@material-ui/core";
 import useVote from "../../hooks/useVote";
 
-function NewsPost({
+function AskPost({
     id,
     title = "Title",
     description = "Description",
     author = "Author",
-    noOfComments = 0,
-    noOfPoints = 0,
     postDate = "Date",
     postImage = "assets/images/news-post-bg.jpg",
-    postUrl = "",
     hideDesc = false,
 }) {
     const { user, setUser } = useContext(UserContext);
-    const handlePostUrl = () => {
-        if (postUrl !== "") {
-            window.open(postUrl, "_blank");
-        }
-    };
     const { onUpVote, upVote, onUnVote, voteCount, commentCount } = useVote(id);
 
     return (
@@ -44,7 +36,7 @@ function NewsPost({
                 <div className="p-5 rounded-bl-lg rounded-br-lg bg-white">
                     <div className="flex justify-between">
                         <span className="text-xs text-red-400 font-bold">{postDate}</span>
-                        <Link href={user.isSignIn ? `/comments/${id}` : `/login`}>
+                        <Link href={`/comments/${id}`}>
                             <span className="text-xs text-gray-600 font-semibold cursor-pointer">{commentCount} Comments</span>
                         </Link>
                     </div>
@@ -63,9 +55,11 @@ function NewsPost({
                         </span>
                         <span className="mt-1 text-sm text-right text-gray-500 font-medium">{author}</span>
                     </div>
-                    <h1 className="mt-2 text-black font-bold cursor-pointer" onClick={handlePostUrl}>
+                    <Link href={`/comments/${id}`}>
+                    <h1 className="mt-2 text-black font-bold cursor-pointer">
                         {title}
                     </h1>
+                    </Link>
                     {!hideDesc && (
                         <p className="text-gray-500 text-sm mt-3">
                             {description.length < 100 ? description : description.substr(0, 100) + "..."}
@@ -77,4 +71,4 @@ function NewsPost({
     );
 }
 
-export default NewsPost;
+export default AskPost;

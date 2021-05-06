@@ -9,7 +9,7 @@ const TopItem = ({ imageUrl, date, title, id, posturl }) => {
     return (
         <div
             key={id}
-            className="flex flex-col w-full md:w-8/12 lg:w-8/12 rounded-2xl  cursor-pointer justify-end m-2"
+            className="flex flex-col w-full md:w-8/12 lg:w-8/12 rounded-2xl  cursor-pointer justify-end mb-2"
             onClick={handlePostUrl}
         >
             <div className=" z-10 relative overflow-hidden rounded-2xl w-full">
@@ -37,7 +37,7 @@ const TopItem = ({ imageUrl, date, title, id, posturl }) => {
                     </svg>
                     <span className="ml-1 mt-1 text-xs md:text-sm font-serif text-yellow-100 hover:text-green-100">{date}</span>
                 </div>
-                <h1 className="text-xs px-2 font-bold md:text-sm lg:text-lg text-white hover:text-red-500">
+                <h1 className="text-xs font-bold md:text-sm lg:text-lg text-white hover:text-red-500 break-words">
                     {title.length < 82 ? title : title.substr(0, 82) + "..."}
                 </h1>
             </div>

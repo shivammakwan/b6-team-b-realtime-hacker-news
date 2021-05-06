@@ -9,7 +9,7 @@ const TrendingItem = ({ imageUrl, date, title, id, posturl }) => {
     return (
         <div
             key={id}
-            className="flex  cursor-pointer flex-col m-2 p-2 border h-auto w-full md:w-96 lg:w-96 shadow-md hover:shadow-lg rounded-xl"
+            className="flex  cursor-pointer flex-col m-2 pl-2 pr-1 py-3 border h-auto w-full md:w-96 lg:w-96 shadow-md hover:shadow-lg rounded-xl"
             onClick={handlePostUrl}
         >
             <div className="flex flex-row h-20 w-full my-1 ">
