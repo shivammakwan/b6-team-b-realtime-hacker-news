@@ -23,7 +23,7 @@ function NewsPost({
             window.open(postUrl, "_blank");
         }
     };
-    const { onUpVote, upVote, onUnVote, voteCount } = useVote(id);
+    const { onUpVote, upVote, onUnVote, voteCount, commentCount } = useVote(id);
 
     return (
         <div className="w-full md:w-1/2 lg:w-1/4 p-3">
@@ -45,7 +45,7 @@ function NewsPost({
                     <div className="flex justify-between">
                         <span className="text-xs text-red-400 font-bold">{postDate}</span>
                         <Link href={user.isSignIn ? `/comments/${id}` : `/login`}>
-                            <span className="text-xs text-gray-600 font-semibold cursor-pointer">{noOfComments} Comments</span>
+                            <span className="text-xs text-gray-600 font-semibold cursor-pointer">{commentCount} Comments</span>
                         </Link>
                     </div>
                     <div className="flex justify-between">
@@ -68,7 +68,7 @@ function NewsPost({
                     </h1>
                     {!hideDesc && (
                         <p className="text-gray-500 text-sm mt-3">
-                            {description.length < 150 ? description : description.substr(0, 150) + "..."}
+                            {description.length < 100 ? description : description.substr(0, 100) + "..."}
                         </p>
                     )}
                 </div>

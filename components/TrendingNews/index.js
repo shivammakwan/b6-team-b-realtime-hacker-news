@@ -21,9 +21,9 @@ const TrendingNews = () => {
 
     return (
         <div className="flex w-screen flex-wrap h-auto pl-10 pr-10  ">
-            <div className=" flex w-full items-center">
-                <h1 className="font-bold text-sm md:text-3xl px-4 py-1">Trending News</h1>
-                <div className="h-1 w-full mr-10 pr-3 md:w-9/12 bg-red-500"></div>
+            <div className=" flex w-full items-center mb-2">
+                <h1 className="font-bold text-sm md:text-3xl px-4 py-1 w-max">Trending News</h1>
+                <div className="h-1 w-full mr-10 pr-3 md:w-full bg-red-500"></div>
             </div>
             {trendingNewsError && (
                 <h1 className="text-center text-base md:text-3xl text-red-400 py-8 px-10">

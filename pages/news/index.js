@@ -25,7 +25,7 @@ export default function News() {
             {latestNewsPostError && <h1 className="text-center text-xl text-red-300 py-10">Failed To Get Latest News Post, Try Again.</h1>}
             {!latestNewsPost && <h1 className="text-center text-xl text-gray-500 py-10">Loading News Post....</h1>}
             {latestNewsPost && (
-                <div className="mt-10 px-10 flex flex-wrap justify-items-start">
+                <div className="mt-4 px-10 flex flex-wrap justify-items-start">
                     {latestNewsPost.map((newsPost, index) => {
                         return (
                             <NewsPost
