@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <>
             <TrendingNews />
-            <HomeAskSection/>
+            {/* <HomeAskSection/> */}
             <HomeNewsSection />
         </>
     );
