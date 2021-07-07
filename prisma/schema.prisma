@@ -75,7 +75,7 @@ model Auth {
   lastLogin DateTime @default(now()) @map(name: "login_at")
   user      User?    @relation(fields: [userId], references: [id])
   userId    Int?
-  token     String
+  token     String   @db.VarChar(800)
   updatedAt DateTime @updatedAt @map(name: "updated_at")
   logoutAt  DateTime @default(now()) @map(name: "logout_at")
 
