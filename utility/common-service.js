@@ -1,4 +1,5 @@
 import fetch from "unfetch";
+
 const monthNames = [
     "January",
     "February",
@@ -33,7 +34,8 @@ const date_Format = (val) => val.getDate() + get_nth_suffix(val.getDate()) + " "
 
 const fetcher = async (path) => {
     const res = await fetch(path);
-    if (!res.ok) throw new Error(`Something went wrong. Please try again.`);
+    if (!res.ok) throw new Error(`Error while fetching records.`);
     return await res.json();
 };
-export { date_Format, fetcher };
+const temp_user = () => "user_" + Math.random(6).toString(36).substr(2).substr(0, 6);
+export { date_Format, fetcher, temp_user };

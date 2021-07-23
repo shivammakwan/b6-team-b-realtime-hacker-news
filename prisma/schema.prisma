@@ -9,7 +9,6 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
-
 model User {
   id          Int           @id @default(autoincrement())
   username    String        @unique
@@ -24,8 +23,10 @@ model User {
   updatedAt   DateTime      @updatedAt @map(name: "updated_at")
   Post_master Post_master[]
 
-  @@map(name: "users")
   Comment Comment[]
+  Like    Like[]
+  @@map(name: "users")
+  Auth Auth[]
 }
 
 model Post_master {
@@ -59,4 +60,24 @@ model Comment {
   post_master Post_master? @relation(fields: [postId], references: [id])
   postId      Int?
   createdAt   DateTime     @default(now()) @map(name: "created_at")
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  parentId  Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime @default(now()) @map(name: "created_at")
+}
+
+model Auth {
+  id        Int      @id @default(autoincrement())
+  lastLogin DateTime @default(now()) @map(name: "login_at")
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  token     String   @db.VarChar(800)
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  logoutAt  DateTime @default(now()) @map(name: "logout_at")
+
+  @@map(name: "auth_user")
 }

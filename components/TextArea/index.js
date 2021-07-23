@@ -11,11 +11,9 @@ const TextArea = ({
     check = false,
 }) => {
     return (
-        <div>
+        <div className="flex flex-col mb-4">
             <textarea
-                className="bg-gray-100 rounded-md mb-1 text-left pl-4 text-2xl shadow-lg lg:text-base"
-                rows="5"
-                cols="50"
+                className="border border-gray-400 py-2 px-3 text-grey-darkest"
                 type="text"
                 placeholder={placeholder}
                 value={text}

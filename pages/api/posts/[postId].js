@@ -1,6 +1,13 @@
 import prisma from "../../../prisma/connection-pool";
+/* 
+This api is used for fetching post by id
+
+API: /api/posts/:id
+
+*/
 
 export default async function (req, res) {
+    console.info(" Controller => Fetch post bt id");
     try {
         const post = await prisma.post_master.findFirst({
             where: {
@@ -22,11 +29,11 @@ export default async function (req, res) {
 
         res.status(200).json(data);
     } catch (error) {
-      console.log("Catch => server error while fetching Trending News: " + error.message);
-      response.status(500).json({
-          status: "error",
-          message: "Unable To Fetch Trending News Posts",
-      });
+        console.log("Catch => server error while fetching post by id: " + error.message);
+        res.status(500).json({
+            status: "error",
+            message: "Error: Unable to fetch Post by id, Please try again later.",
+        });
   } finally {
       prisma.$disconnect();
   }
